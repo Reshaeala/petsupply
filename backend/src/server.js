@@ -1,5 +1,4 @@
 import express from "express";
-import dotenv from "dotenv";
 import cors from "cors";
 import cookieParser from "cookie-parser";
 import helmet from "helmet";
@@ -15,7 +14,6 @@ import cartRoutes from "./routes/cart.js";
 import orderRoutes from "./routes/orders.js";
 import uploadRoutes from "./routes/uploads.js";
 
-dotenv.config();
 const app = express();
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -24,11 +22,23 @@ const __dirname = path.dirname(__filename);
 app.use(helmet());
 app.use(morgan("dev"));
 
-app.use(cors());
+// CORS for dev (adjust allowed origins as needed)
+// const allowedOrigins = ["http://localhost:5173", "http://127.0.0.1:5173"];
+// app.use(
+//   cors({
+//     origin(origin, cb) {
+//       if (!origin || allowedOrigins.includes(origin)) return cb(null, true);
+//       return cb(new Error("Not allowed by CORS"));
+//     },
+//     credentials: false, // true only if you use cookies/sessions
+//     methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
+//     allowedHeaders: ["Content-Type", "Authorization"],
+//   })
+// );
 
 // IMPORTANT: let preflight succeed
-app.options("*", cors());
-
+// app.options("*", cors());
+app.use(cors({ origin: true }));
 // Body & cookies
 app.use(express.json({ limit: "1mb" }));
 app.use(cookieParser());
@@ -65,7 +75,7 @@ app.use((err, _req, res, _next) => {
   res.status(500).json({ error: err.message || "Internal server error" });
 });
 
-const PORT = process.env.PORT || 4000;
-app.listen(PORT, "0.0.0.0", () =>
+const PORT = 4000;
+app.listen(PORT, () =>
   console.log(`API on http://localhost:${PORT}`)
 );
