@@ -43,7 +43,7 @@ router.get("/species/:species", async (req, res, next) => {
 
     // Fetch products where the species matches the query
     const products = await prisma.product.findMany({
-      where: { species: species.toUpperCase() },
+      where: { species: species.toLowerCase() },
       include: { category: true },
     });
 
