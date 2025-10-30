@@ -15,15 +15,6 @@ import { getAuth, GoogleAuthProvider } from "firebase/auth";
 //     import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID ||
 //     process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
 // };
-const firebaseConfig = {
-  apiKey: "AIzaSyCARraQaOJNCZ8uEM9cR1HYnegVaOV8KU4",
-  authDomain: "petsupplies-dd454.firebaseapp.com",
-  projectId: "petsupplies-dd454",
-  storageBucket: "petsupplies-dd454.firebasestorage.app",
-  messagingSenderId: "188646016371",
-  appId: "1:188646016371:web:cd3351393b6410c3993106",
-  measurementId: "G-1PQW5R921T",
-};
 
 const app = initializeApp(firebaseConfig);
 
