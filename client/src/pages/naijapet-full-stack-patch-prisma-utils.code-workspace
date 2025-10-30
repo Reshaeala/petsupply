@@ -1,0 +1,13 @@
+{
+  "folders": [
+	{
+		"name": "naijapet-full-stack-patch-prisma-utils",
+		"path": "../../.."
+	},
+	{
+		"name": "backend",
+		"path": "../../../../../Desktop/pet-supplies-app/backend"
+	}
+],
+  "settings": {}
+}
